@@ -1,10 +1,12 @@
-=== Reveal IDs ===
+﻿=== Reveal IDs ===
 Contributors: Alphawolf
-Donate link: http://www.schloebe.de/donate/
-Tags: reveal, id, wp-admin, hidden, category, post, page, media, links, capability, user, restore, comments
-Requires at least: 2.5
-Tested up to: 3.1
+Donate link: https://www.schloebe.de/donate/
+Tags: reveal, id, wp-admin, hidden, category, post, page, media, links, capability, user, restore, comments, taxonomy, custom posts, post type, multisite, ms
+Requires at least: 3.0
+Tested up to: 4.8.999
 Stable tag: trunk
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 What this plugin does is to reveal most removed IDs on admin pages, as it was in versions prior to 2.5.
 
@@ -16,8 +18,9 @@ What this plugin does is to reveal most removed entry IDs on admin pages, showin
 
 **Features:**
 
-* Following IDs can be revealed: Posts, Pages, Categories, Links, Media, Users, Comments, Link categories, Tags (WP 2.8 and above)
-* Each ID can be de-/activated seperately, plus you can **allow/permit user roles to see the IDs**
+* Sortable columns for WP 3.1 or higher
+
+[Developer on Google+](https://plus.google.com/118074611982254715031 "Developer on Google+") | [Developer on Twitter](https://twitter.com/wpseek "Developer on Twitter")
 
 **Included languages:**
 
@@ -30,10 +33,13 @@ What this plugin does is to reveal most removed entry IDs on admin pages, showin
 * Belorussian (by_BY) (Thanks for contributing belorussian language goes to [FatCow](http://www.fatcow.com))
 * Dutch (nl_NL) (Thanks for contributing dutch language goes to [wpwebshop.com](http://wpwebshop.com/premium-wordpress-plugins/))
 * European Portuguese (pt_PT) (Thanks for contributing european portuguese language goes to [PL Monteiro](http://thepatientcapacitor.com/))
-* Polish (pl_PL) (Thanks for contributing dutch language goes to Simivar)
+* Polish (pl_PL) (Thanks for contributing polish language goes to Simivar)
 * Romanian (ro_RO) (Thanks for contributing romanian language goes to [Anunturi Jibo](http://www.jibo.ro))
+* Georgian (ge_KA) (Thanks for contributing georgian language goes to [Online Casino Bluebook](http://www.onlinecasinobluebook.com/))
+* Swedish (sv_SE) (Thanks for contributing swedish language goes to [Tor-Bjorn Fjellner](http://fjellner.com/))
+* Ukrainian (uk) (Thanks for contributing ukrainian language goes to [Everycloud](http://www.everycloudtech.com/))
 
-**Want update feeds, code documentation and more? Visit [extend.schloebe.de](http://extend.schloebe.de)**
+**Looking for more WordPress plugins? Visit [www.schloebe.de/portfolio/](https://www.schloebe.de/portfolio/)**
 
 == Frequently Asked Questions ==
 
@@ -47,6 +53,66 @@ None.
 1. Installation finished.
 
 == Changelog ==
+
+= 1.5.2 =
+* Workaround for third-party plugin incompatibilities
+
+= 1.5.1 =
+* Sortable columns for users listing on multisite/network
+
+= 1.5.0 =
+* Full support for multisite
+* Code cleanup
+
+= 1.4.7 =
+* WordPress 4.7 compatibility
+* PHP 7 compatibility
+
+= 1.4.6.2 =
+* Added ukrainian localization (Thanks to Alisa Bagrii!)
+
+= 1.4.6.1 =
+* Backend cleanup
+* Added uninstall.php
+
+= 1.4.6 =
+* Fixed an issue that caused a redirection loop in some environments
+
+= 1.4.5 =
+* Fixed a 'Redefining already defined constructor' bug that occured on several configurations
+* Prepwork for Language Packs
+
+= 1.4.1 =
+* Increased width and added word-wrap for ID columns (for long IDs)
+
+= 1.4.0 =
+* Sortable columns for WP 3.1 or higher
+
+= 1.3.0 =
+* Complete Code rewrite
+* Full support for custom post types
+* Full support for custom taxonomies
+
+= 1.2.7 =
+* Plugin now requires at least 2.6
+* Readme.txt updated to be more compliant with the readme.txt standard
+* Moved screenshots off the package to the assets/ folder
+
+= 1.2.6 =
+* Removed capability options. If you don't want to see IDs on a particular panel, just remove them via Screen Options.
+* Issues with SSL fixed
+
+= 1.2.5 =
+* Maintenance Update
+
+= 1.2.4 =
+* Maintenance Update
+
+= 1.2.3 =
+* Fixed ID columns so that other plugins' custom columns won't be empty anymore
+
+= 1.2.2 =
+* Added georgian localization (Thanks to Kasia!)
 
 = 1.2.1 =
 * Added romanian localization (Thanks to Anunturi Jibo!)

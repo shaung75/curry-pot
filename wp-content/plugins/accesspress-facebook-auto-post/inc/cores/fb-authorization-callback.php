@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') or die('No script kiddies please!');
 //die('123');
-$code = $_GET['code'];
+$code = sanitize_text_field($_GET['code']);
 $account_details = get_option('afap_settings');
 //$this->print_array($account_details);
 $app_id = $account_details['application_id'];
@@ -17,10 +17,11 @@ $params = null;
 $access_token = "";
 $response = wp_remote_get($token_url);
 $body = wp_remote_retrieve_body($response);
+$body_response = json_decode($body);
 if ($body != '') {
     parse_str($body, $params);
-    if (isset($params['access_token'])) {
-        $access_token = $params['access_token'];
+    if (isset($params['access_token']) || isset($body_response->access_token)) {
+        $access_token = $body_response->access_token;
         $offset = 0;
         $limit = 100;
         $data = array();

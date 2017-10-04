@@ -15,21 +15,13 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
-<!-- favicon -->
-
-<?php if ( of_get_option( 'custom_favicon' ) ) { ?>
-<link rel="icon" href="<?php echo of_get_option( 'custom_favicon' ); ?>" />
-<?php } ?>
-
-<!--[if IE]><?php if ( of_get_option( 'custom_favicon' ) ) { ?><link rel="shortcut icon" href="<?php echo of_get_option( 'custom_favicon' ); ?>" /><?php } ?><![endif]-->
-
 <?php wp_head(); ?>
 
 </head>
 
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
-	<div class="container">
+	<div class="container header-area">
 		<?php do_action( 'before' ); ?>
 		<header id="masthead" class="site-header col-sm-12" role="banner">
 
@@ -52,7 +44,7 @@
 				</div>
 
 			<div class="social-header col-md-6">
-				<?php unite_social(); // Social icons in header ?>
+				<?php unite_social_icons(); // Social icons in header ?>
 			</div>
 
 		</header><!-- #masthead -->
@@ -83,4 +75,13 @@
 		    </div>
 		</nav><!-- .site-navigation -->
 
-	<div id="content" class="site-content container">
+	<div id="content" class="site-content container"><?php
+            global $post;
+            if( is_singular() && get_post_meta($post->ID, 'site_layout', true) ){
+                $layout_class = get_post_meta($post->ID, 'site_layout', true);
+            }
+            else{
+                $layout_class = of_get_option( 'site_layout' );
+            }
+            ?>
+            <div class="row <?php echo $layout_class; ?>">

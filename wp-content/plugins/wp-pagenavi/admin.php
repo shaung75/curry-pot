@@ -12,13 +12,18 @@ class PageNavi_Options_Page extends scbAdminPage {
 		);
 	}
 
-	function validate( $options ) {
-		foreach ( array( 'style', 'num_pages', 'num_larger_page_numbers', 'larger_page_numbers_multiple' ) as $key )
-			$options[$key] = absint( @$options[$key] );
-
-		foreach ( array( 'use_pagenavi_css', 'always_show' ) as $key )
-			$options[$key] = (bool) @$options[$key];
-
+	function validate( $new_data, $old_data ) {
+		$options = wp_parse_args($new_data, $old_data);
+		foreach ( array( 'style', 'num_pages', 'num_larger_page_numbers', 'larger_page_numbers_multiple' ) as $key ) {
+			$options[ $key ] = absint( @$options[ $key ] );
+		}
+		foreach ( array( 'use_pagenavi_css', 'always_show' ) as $key ) {
+			$options[ $key ] = intval( @$options[ $key ] );
+		}
+		foreach ( array( 'pages_text', 'current_text', 'page_text', 'first_text', 'last_text', 'prev_text', 'next_text', 'dotleft_text', 'dotright_text' ) as $key ) {
+			$options[ $key ] = wp_kses_post( @$options[ $key ] );
+		}
+		
 		return $options;
 	}
 
@@ -100,8 +105,9 @@ class PageNavi_Options_Page extends scbAdminPage {
 		$rows = array(
 			array(
 				'title' => __( 'Use pagenavi-css.css', $this->textdomain ),
-				'type' => 'checkbox',
+				'type' => 'radio',
 				'name' => 'use_pagenavi_css',
+				'choices' => array( 1 => __( 'Yes', $this->textdomain ), 0 => __( 'No', $this->textdomain ) )
 			),
 
 			array(
@@ -114,9 +120,10 @@ class PageNavi_Options_Page extends scbAdminPage {
 
 			array(
 				'title' => __( 'Always Show Page Navigation', $this->textdomain ),
-				'type' => 'checkbox',
+				'type' => 'radio',
 				'name' => 'always_show',
-				'desc' => __( "Show navigation even if there's only one page.", $this->textdomain )
+				'choices' => array( 1 => __( 'Yes', $this->textdomain ), 0 => __( 'No', $this->textdomain ) ),
+				'desc' => '<br />'.__( "Show navigation even if there's only one page.", $this->textdomain )
 			),
 
 			array(
@@ -144,7 +151,7 @@ class PageNavi_Options_Page extends scbAdminPage {
 				'extra' => 'class="small-text"',
 				'desc' =>
 				'<br />' . __( 'For example, if mutiple is 5, it will show: 5, 10, 15, 20, 25', $this->textdomain )
-			),
+			)
 		);
 
 		$out .=

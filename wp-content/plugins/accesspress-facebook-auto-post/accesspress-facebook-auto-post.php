@@ -4,7 +4,7 @@ defined('ABSPATH') or die('No script kiddies please!');
  * Plugin Name: AccessPress Facebook Auto Post
  * Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-facebook-auto-post/
  * Description: A plugin to publish your wordpress posts to facebook profile and fan pages
- * Version: 1.3.4
+ * Version: 1.3.9
  * Author: AccessPress Themes
  * Author URI: http://accesspressthemes.com
  * Text Domain: accesspress-facebook-auto-post
@@ -45,6 +45,7 @@ if (!class_exists('AFAP_Class')) {
             add_action('add_meta_boxes', array($this, 'add_afap_meta_box')); //adds plugin's meta box
             add_action('save_post', array($this, 'save_afap_meta_value')); //saves meta value 
             add_action('future_to_publish', array($this, 'auto_post_schedule')); 
+            add_action(  'transition_post_status',  array($this,'auto_post'), 10, 3 );
             
         }
         
@@ -62,7 +63,7 @@ if (!class_exists('AFAP_Class')) {
                 define('AFAP_JS_DIR', plugin_dir_url(__FILE__) . 'js');
             }
             if (!defined('AFAP_VERSION')) {
-                define('AFAP_VERSION', '1.3.4');
+                define('AFAP_VERSION', '1.3.9');
             }
             if (!defined('AFAP_TD')) {
                 define('AFAP_TD', 'accesspress-facebook-auto-post');
@@ -245,7 +246,7 @@ if (!class_exists('AFAP_Class')) {
             foreach ($post_types as $post_type) {
                 $publish_action = 'publish_' . $post_type;
                 $publish_future_action = 'publish_future_'.$post_type;
-                add_action($publish_action, array($this, 'auto_post'), 10, 2);
+              //  add_action($publish_action, array($this, 'auto_post'), 10, 2);
               //  add_action($publish_action, array($this, 'auto_post_schedule'), 10, 2);
                 
             }
@@ -254,13 +255,15 @@ if (!class_exists('AFAP_Class')) {
         /**
          * Auto Post Action
          * */
-        function auto_post($id, $post) {
-            $auto_post = $_POST['afap_auto_post'];
-            if ($auto_post == 'yes' || $auto_post == '') {
-                include_once('api/facebook.php'); // facebook api library
-                include('inc/cores/auto-post.php');
-                $check = update_post_meta($post->ID, 'afap_auto_post', 'no');
-                $_POST['afap_auto_post'] = 'no';
+        function auto_post($new_status, $old_status, $post) {
+            if($new_status == 'publish'){
+                $auto_post = $_POST['afap_auto_post'];
+                if ($auto_post == 'yes' || $auto_post == '') {
+                    include_once('api/facebook.php'); // facebook api library
+                    include('inc/cores/auto-post.php');
+                    $check = update_post_meta($post->ID, 'afap_auto_post', 'no');
+                    $_POST['afap_auto_post'] = 'no';
+                }
             }
         }
         
@@ -403,6 +406,9 @@ if (!class_exists('AFAP_Class')) {
             wp_redirect('admin.php?page=afap');
             exit();
         }
+        
+        	
+        	
 
     }
 

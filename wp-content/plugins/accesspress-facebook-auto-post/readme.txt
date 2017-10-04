@@ -2,9 +2,9 @@
 Contributors: Access Keys
 Tags: facebook auto post, facebook auto publish, auto post, facebook, auto publish, facebook fan page auto post, facebook publish, facebook profile auto post, social auto post
 Donate link: http://accesspressthemes.com/donation/
-Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: 1.3.4
+Requires at least: 4.5
+Tested up to: 4.8
+Stable tag: 1.3.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Auto Publish wordpress posts/pages/custom post types to Facebook Profile and Fan
 == Description ==
 [Homepage](https://accesspressthemes.com/) | [Documentation](https://www.youtube.com/watch?v=IZ2P9SWKl-k) | [Support](https://accesspressthemes.com/support/) | [Premium Version](http://accesspressthemes.com/wordpress-plugins/accesspress-social-auto-post/)
 
-Testing with WordPress 4.7
+Tested with WordPress 4.7
 
 <strong>AccessPress Facebook Auto Post</strong> is a FREE Facebook plugin for WordPress. You can use this to publish your site's posts,pages and custom post types to your facebook profile and fan pages as soon as you hit the publish button in your site.
 The posting process is fully automated and as easy as 1, 2, 3!
@@ -108,6 +108,21 @@ Once you install the plugin , you can check some general documentation about how
 
 
 == Changelog ==
+= 1.3.9 = 
+* Updated the plugin to auto publish the posts inserted programatically or imported from different plugins
+
+= 1.3.8 = 
+* WordPress 4.8 Compatibility Update 
+
+= 1.3.7 = 
+* Updated Facebook Authorization mechanism as per new API changes 
+
+= 1.3.6 = 
+* Updaed how to use section 
+
+= 1.3.5 = 
+* Added sanitization for Facebook authorization code
+
 = 1.3.4 = 
 * Updated social media links target in the backend
 

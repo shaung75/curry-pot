@@ -1,111 +1,154 @@
 <?php
 
-function wpcf7_plugin_path( $path = '' ) {
-	return path_join( WPCF7_PLUGIN_DIR, trim( $path, '/' ) );
-}
-
-function wpcf7_plugin_url( $path = '' ) {
-	return plugins_url( $path, WPCF7_PLUGIN_BASENAME );
-}
-
-function wpcf7_admin_url( $query = array() ) {
-	global $plugin_page;
-
-	if ( ! isset( $query['page'] ) )
-		$query['page'] = $plugin_page;
-
-	$path = 'admin.php';
-
-	if ( $query = build_query( $query ) )
-		$path .= '?' . $query;
-
-	$url = admin_url( $path );
-
-	return esc_url_raw( $url );
-}
-
-function wpcf7_table_exists( $table = 'contactforms' ) {
-	global $wpdb, $wpcf7;
-
-	if ( 'contactforms' != $table )
-		return false;
-
-	if ( ! $table = $wpcf7->{$table} )
-		return false;
-
-	return strtolower( $wpdb->get_var( "SHOW TABLES LIKE '$table'" ) ) == strtolower( $table );
-}
-
-function wpcf7() {
-	global $wpdb, $wpcf7;
-
-	if ( is_object( $wpcf7 ) )
-		return;
-
-	$wpcf7 = (object) array(
-		'contactforms' => $wpdb->prefix . "contact_form_7",
-		'processing_within' => '',
-		'widget_count' => 0,
-		'unit_count' => 0,
-		'global_unit_count' => 0 );
-}
-
-wpcf7();
-
 require_once WPCF7_PLUGIN_DIR . '/includes/functions.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/l10n.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/formatting.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/pipe.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/form-tag.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/form-tags-manager.php';
 require_once WPCF7_PLUGIN_DIR . '/includes/shortcodes.php';
-require_once WPCF7_PLUGIN_DIR . '/includes/classes.php';
-require_once WPCF7_PLUGIN_DIR . '/includes/taggenerator.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/capabilities.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/contact-form-template.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/contact-form.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/contact-form-functions.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/mail.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/submission.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/upgrade.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/integration.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/config-validator.php';
+require_once WPCF7_PLUGIN_DIR . '/includes/rest-api.php';
 
-if ( is_admin() )
+if ( is_admin() ) {
 	require_once WPCF7_PLUGIN_DIR . '/admin/admin.php';
-else
+} else {
 	require_once WPCF7_PLUGIN_DIR . '/includes/controller.php';
-
-function wpcf7_contact_forms() {
-	global $wpdb, $wpcf7;
-
-	return $wpdb->get_results( "SELECT cf7_unit_id as id, title FROM $wpcf7->contactforms" );
 }
 
-add_action( 'plugins_loaded', 'wpcf7_set_request_uri', 9 );
+class WPCF7 {
 
-function wpcf7_set_request_uri() {
-	global $wpcf7_request_uri;
+	public static function load_modules() {
+		self::load_module( 'acceptance' );
+		self::load_module( 'akismet' );
+		self::load_module( 'checkbox' );
+		self::load_module( 'count' );
+		self::load_module( 'date' );
+		self::load_module( 'file' );
+		self::load_module( 'flamingo' );
+		self::load_module( 'listo' );
+		self::load_module( 'number' );
+		self::load_module( 'quiz' );
+		self::load_module( 'really-simple-captcha' );
+		self::load_module( 'recaptcha' );
+		self::load_module( 'response' );
+		self::load_module( 'select' );
+		self::load_module( 'submit' );
+		self::load_module( 'text' );
+		self::load_module( 'textarea' );
+		self::load_module( 'hidden' );
+	}
 
-	$wpcf7_request_uri = add_query_arg( array() );
-}
+	protected static function load_module( $mod ) {
+		$dir = WPCF7_PLUGIN_MODULES_DIR;
 
-function wpcf7_get_request_uri() {
-	global $wpcf7_request_uri;
+		if ( empty( $dir ) || ! is_dir( $dir ) ) {
+			return false;
+		}
 
-	return (string) $wpcf7_request_uri;
-}
+		$file = path_join( $dir, $mod . '.php' );
 
-/* Loading modules */
+		if ( file_exists( $file ) ) {
+			include_once $file;
+		}
+	}
 
-add_action( 'plugins_loaded', 'wpcf7_load_modules', 1 );
+	public static function get_option( $name, $default = false ) {
+		$option = get_option( 'wpcf7' );
 
-function wpcf7_load_modules() {
-	$dir = WPCF7_PLUGIN_MODULES_DIR;
+		if ( false === $option ) {
+			return $default;
+		}
 
-	if ( ! ( is_dir( $dir ) && $dh = opendir( $dir ) ) )
-		return false;
+		if ( isset( $option[$name] ) ) {
+			return $option[$name];
+		} else {
+			return $default;
+		}
+	}
 
-	while ( ( $module = readdir( $dh ) ) !== false ) {
-		if ( substr( $module, -4 ) == '.php' )
-			include_once $dir . '/' . $module;
+	public static function update_option( $name, $value ) {
+		$option = get_option( 'wpcf7' );
+		$option = ( false === $option ) ? array() : (array) $option;
+		$option = array_merge( $option, array( $name => $value ) );
+		update_option( 'wpcf7', $option );
 	}
 }
 
-/* L10N */
+add_action( 'plugins_loaded', 'wpcf7' );
 
-add_action( 'init', 'wpcf7_load_plugin_textdomain' );
+function wpcf7() {
+	wpcf7_load_textdomain();
+	WPCF7::load_modules();
 
-function wpcf7_load_plugin_textdomain() {
-	load_plugin_textdomain( 'wpcf7', false, 'contact-form-7/languages' );
+	/* Shortcodes */
+	add_shortcode( 'contact-form-7', 'wpcf7_contact_form_tag_func' );
+	add_shortcode( 'contact-form', 'wpcf7_contact_form_tag_func' );
 }
 
-?>
+add_action( 'init', 'wpcf7_init' );
+
+function wpcf7_init() {
+	wpcf7_get_request_uri();
+	wpcf7_register_post_types();
+
+	do_action( 'wpcf7_init' );
+}
+
+add_action( 'admin_init', 'wpcf7_upgrade' );
+
+function wpcf7_upgrade() {
+	$old_ver = WPCF7::get_option( 'version', '0' );
+	$new_ver = WPCF7_VERSION;
+
+	if ( $old_ver == $new_ver ) {
+		return;
+	}
+
+	do_action( 'wpcf7_upgrade', $new_ver, $old_ver );
+
+	WPCF7::update_option( 'version', $new_ver );
+}
+
+/* Install and default settings */
+
+add_action( 'activate_' . WPCF7_PLUGIN_BASENAME, 'wpcf7_install' );
+
+function wpcf7_install() {
+	if ( $opt = get_option( 'wpcf7' ) ) {
+		return;
+	}
+
+	wpcf7_load_textdomain();
+	wpcf7_register_post_types();
+	wpcf7_upgrade();
+
+	if ( get_posts( array( 'post_type' => 'wpcf7_contact_form' ) ) ) {
+		return;
+	}
+
+	$contact_form = WPCF7_ContactForm::get_template(
+		array(
+			'title' => sprintf( __( 'Contact form %d', 'contact-form-7' ), 1 ),
+		)
+	);
+
+	$contact_form->save();
+
+	WPCF7::update_option( 'bulk_validate',
+		array(
+			'timestamp' => current_time( 'timestamp' ),
+			'version' => WPCF7_VERSION,
+			'count_valid' => 1,
+			'count_invalid' => 0,
+		)
+	);
+}

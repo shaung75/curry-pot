@@ -2,8 +2,8 @@
 
 Theme Name: Unite
 Theme URI: http://colorlib.com/wp/unite/
-Version: 1.5.8
-Tested up to: WP 4.1
+Version: 2.0.2
+Tested up to: WP 4.5
 
 #Copyright notice#
 
@@ -36,10 +36,9 @@ You can install the theme through the WordPress installer under "Themes" > "Inst
 
 Alternatively you can download the file, unzip it and move the unzipped contents to the "wp-content/themes" folder of your WordPress installation. You will then be able to activate the theme.
 
-This theme relies on Options Framework by WP Theming to provide customization options.
-Right after you activate Unite, you'll see message on top of your screen, asking you to install Options Framework (required) and CPT Bootstrap Carousel (optional). Make sure you install and activate those plugins.
+Right after you activate Unite, you'll see message on top of your screen, asking you to install CPT Bootstrap Carousel (optional). Make sure you install and activate it if you want to setup image slider just like on theme demo.
 
-If you dismiss this notice, you can install those plugins later via Appearance->Install plugins.
+If you dismiss this notice, you can install this plugin later via Appearance->Install plugins.
 
 #Theme Features#
 
@@ -61,6 +60,57 @@ Theme documentation is available on http://colorlib.com/wp/support/unite
 
 #Changelog#
 
+####2.0.2 - 18.03.2016 ####
+
+* Added a new social icons
+* Other small bug fixes.
+* Updated translation files
+
+####2.0.1 - 08.02.2016 ####
+
+* Added missing header navigation
+
+####2.0 - 17.11.2015 ####
+
+* Removed redundant functions
+* Removed Theme Options in favor to WordPress Theme Customizer
+* Other code cleanup
+
+####1.6.7 - 09.10.2015 ####
+
+* Added Brazilian Portuguese translation thanks to Paulo Eishima
+
+####1.6.6 - 10.07.2015 ####
+
+* Replaced h1 tags with h2 on blog and archive pages for better SEO
+* Improved Custom CSS forum output
+
+####1.6.5 - 24.04.2015 ####
+
+* Theme is now much more Child Theme friendly.
+* Added numerous check for if function_exists.
+
+####1.6.1 - 24.04.2015 ####
+
+Fixed potential security vulnerability for TGM-Plugin-Activation
+
+####1.6.0 - 04.04.2015 ####
+
+* Updated Options Framework
+* Improved translation support
+* Other small code tweaks and improvements
+
+####1.5.10 - 01.04.2015 ####
+
+* Updated Bootstrap framework to 3.3.4
+* Added extra class name "header-area" to provide more flexibility when customizing this theme.
+* Fixed problem with invisible label for color variations in WooCommerce
+* Other minor CSS fixed for WooCommerce
+
+####1.5.9 - 11.02.2015 ####
+
+* Improved favicon support and now loaded in frontend and backend.
+
 ####1.5.8 - 26.01.2015 ####
 
 * Added support for tittle-tag
@@ -69,14 +119,14 @@ Theme documentation is available on http://colorlib.com/wp/support/unite
 
 ####1.5.7 - 15.01.2015 ####
 
-* Fixed error in main JavaScript file. 
+* Fixed error in main JavaScript file.
 
 ####1.5.6 - 20.11.2014 ####
 
 * Styling improvements for WooCommerce
 * Improved social icons on hover
 * Updated readme file for Github.
-* All updated made possible thanks to [@amiyasahu](https://github.com/amiyasahu) 
+* All updated made possible thanks to [@amiyasahu](https://github.com/amiyasahu)
 
 ####1.5.5 - 15.11.2014 ####
 
@@ -85,7 +135,7 @@ Theme documentation is available on http://colorlib.com/wp/support/unite
 ####1.5.4 - 07.11.2014 ####
 
 * Tiny HTML improvements
-* Fixed problems with Jetpack Infinite scroll after plugin update. 
+* Fixed problems with Jetpack Infinite scroll after plugin update.
 
 ####1.5.3 - 02.11.2014 ####
 
