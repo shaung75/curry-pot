@@ -1,0 +1,13 @@
+#masthead,#secondary,#footer-widgets,.site-footer,
+#comments,.entry-footer, .nav-links, .recipe .video,img{
+	display: none;
+}
+
+ a[href]:after {
+    content: none !important;
+}
+
+.recipe .steps ol li{
+	margin:10px 0px;
+	padding: 0px 0px;
+}
