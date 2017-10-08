@@ -241,8 +241,19 @@ function cmb_render_duration_field( $field_args, $value, $object_id, $object_typ
 
 }
 
-/* Credits */
 
+include('inc/curry-functions.php');
+
+
+
+
+
+
+/* Credits */
+/* What the fuck is this?
+ * TODO: look into
+*/
+/*
 function selfURL() {
 $uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] :
 $_SERVER['PHP_SELF'];
@@ -282,4 +293,4 @@ else $fflink = '';
 echo $fflink;
 }
 
-
+*/
