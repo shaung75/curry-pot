@@ -35,3 +35,17 @@ function cp_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'cp_widgets_init' );
+
+/**
+ * Removes showing results
+ */
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+
+/**
+ * Enqueue scripts and styles.
+ */
+function cp_scripts() {
+
+	wp_enqueue_style( 'cp-styles', get_template_directory_uri() . '/css/curry-pot.css');
+}
+add_action( 'wp_enqueue_scripts', 'cp_scripts' );
