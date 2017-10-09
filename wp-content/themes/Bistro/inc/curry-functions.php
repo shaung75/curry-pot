@@ -41,6 +41,11 @@ add_action( 'widgets_init', 'cp_widgets_init' );
  */
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 
+add_filter( 'woocommerce_subcategory_count_html', 'jk_hide_category_count' );
+function jk_hide_category_count() {
+	// No count
+}
+
 /**
  * Enqueue scripts and styles.
  */

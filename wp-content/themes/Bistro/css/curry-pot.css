@@ -16,7 +16,9 @@
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
-
+.woocommerce .woocommerce-ordering {
+    margin: 0 0 20px;
+}
 .woocommerce .woocommerce-products-header {
 	position: relative;
 }
@@ -33,4 +35,21 @@
     position: absolute;
     bottom: -25px;
     border-bottom: 5px solid #d8d8d8;
+}
+.woocommerce .product-category a {
+    border: 1px solid #5e9600;
+    padding: 5px;
+    display: inline-block;
+    position: relative;
+}
+.woocommerce .product-category a h2 {
+    position: absolute;
+    top: 50%;
+    background: rgba(255,255,255,1);
+    font-family: 'Bree serif', serif;
+}
+.woocommerce .product-category a h2 .count {
+    background: #000;
+    color: #666;
+    font-size: 16px;
 }
