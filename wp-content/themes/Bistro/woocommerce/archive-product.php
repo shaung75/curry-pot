@@ -55,6 +55,16 @@ get_header( 'shop' ); ?>
 
 	    </header>
 
+			<div class="container catcontainer">
+
+				<div class="row">
+
+					<?php woocommerce_product_subcategories();?>
+
+				</div>	
+
+			</div>
+
 			<?php if ( have_posts() ) : ?>
 
 				<?php
@@ -70,8 +80,8 @@ get_header( 'shop' ); ?>
 
 				<?php woocommerce_product_loop_start(); ?>
 
-					<?php woocommerce_product_subcategories(); ?>
 					
+
 					<?php while ( have_posts() ) : the_post(); ?>
 
 						<?php

@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<span class="navbar-brand">Refine:</span>
+			<!--<span class="navbar-brand">Refine:</span>-->
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->

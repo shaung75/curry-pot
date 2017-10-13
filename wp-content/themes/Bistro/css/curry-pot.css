@@ -1,7 +1,14 @@
+.woocommerce .catcontainer {
+    margin-top: 45px;
+    margin-bottom: 20px;
+}
+.woocommerce .navbar {
+    z-index: 1;
+    background: #fff;
+}
 .woocommerce #secondary {
 	padding-top: 0px;
 }
-
 .woocommerce .woocommerce-breadcrumb {
 	padding: 10px 30px;
 	font-family: 'Bree serif', serif;
@@ -25,7 +32,7 @@
 .woocommerce .woocommerce-products-header h1 {
 	font-family: 'Bree serif', serif;
     font-size: 36px;
-    margin: 0px 0px 55px 0px;
+    margin: 0px 0px 25px 0px;
     color: #222;
 }
 .woocommerce .woocommerce-products-header h1:after {
