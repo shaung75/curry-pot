@@ -29,7 +29,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 
 // Additional post Classes
 $classes = get_post_class();
-$classes[] = 'col-md-4';
+$classes[] = 'col-md-4 productarchive';
 ?>
 <div <?php post_class($classes); ?>>
 	<?php
