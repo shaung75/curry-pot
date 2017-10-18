@@ -41,11 +41,20 @@
 		</div>
 		
 		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<div class="container"> <div class="row">
-				<div class="col-md-12">
-					<?php wp_nav_menu( array( 'theme_location' => 'primary','menu_id' =>'bistro') ); ?>
+			<div class="container"> 
+				<div class="row">
+					<div class="col-md-10">
+						<?php wp_nav_menu( array( 'theme_location' => 'primary','menu_id' =>'bistro') ); ?>
+					</div>
+					<div class="col-md-2">
+						<ul class="menu  pull-right">
+							<li class="menu-item"><a href="#">hi</a></li>
+							<li class="menu-item"><a href="#">hi</a></li>
+							<li class="menu-item"><a href="#">hi</a></li>
+						</ul>
+					</div>
 				</div>
-			</div></div>
+			</div>
 		</nav><!-- #site-navigation -->
 
 	</header><!-- #masthead -->
