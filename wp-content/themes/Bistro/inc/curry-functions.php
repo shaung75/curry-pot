@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * Add in Wordpress Bootstrap Nav Walker
+ */
+require_once('wp-bootstrap-navwalker.php');
+
+/**
  * Remove default WooCommerce wrappers
  */
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);

@@ -31,30 +31,23 @@
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
 				</button> 
-				<a class="navbar-brand" href="#">
+				<a class="navbar-brand" href="<?php bloginfo('url')?>">
 					<img relWidth="<?php echo intval(get_theme_mod(FT_scope::tool()->optionsName . '_maxWidth', 0)); ?>" relHeight="<?php echo intval(get_theme_mod(FT_scope::tool()->optionsName . '_maxHeight', 0)); ?>" id="ft_logo" src="<?php echo get_theme_mod(FT_scope::tool()->optionsName . '_logo', ''); ?>" alt="" />
 				</a> 
 			</div> 
 			<!-- Collect the nav links, forms, and other content for toggling --> 
-			<div class="collapse navbar-collapse navbar-ex1-collapse"> 
-				<ul class="nav navbar-nav"> 
-					<li class="active"><a href="#">Link</a></li> 
-					<li><a href="#">Link</a></li> 
-					<li class="dropdown">
-						<a href="http://www.google.com" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a> 
-						<ul class="dropdown-menu"> 
-							<li><a href="#">Action</a></li> 
-							<li><a href="#">Another action</a></li> 
-							<li><a href="#">Something else here</a></li> 
-							<li><a href="#">Separated link</a></li> 
-							<li><a href="#">One more separated link</a></li> 
-							<li><a href="#">One more separated link</a></li> 
-							<li><a href="#">One more separated link</a></li> 
-							<li><a href="#">One more separated link</a></li> 
-							<li><a href="#">One more separated link</a></li> 
-						</ul> 
-					</li> 
-				</ul>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+
+			<?php /* Primary navigation */
+				wp_nav_menu( array(
+					'menu' => 'Main Menu',
+					'depth' => 2,
+					'container' => false,
+					'menu_class' => 'nav navbar-nav',
+					//Process nav menu using our custom nav walker
+					'walker' => new wp_bootstrap_navwalker())
+				);
+			?>
 			</div>
 		</div>
 	</nav>
