@@ -57,5 +57,12 @@ function jk_hide_category_count() {
 function cp_scripts() {
 
 	wp_enqueue_style( 'cp-styles', get_template_directory_uri() . '/css/curry-pot.css');
+	
+	wp_register_script( 
+        'cp-scripts', 
+        get_template_directory_uri() . '/js/curry-pot.js', 
+        array( 'jquery' )
+    );
+	wp_enqueue_script('cp-scripts');
 }
 add_action( 'wp_enqueue_scripts', 'cp_scripts' );
