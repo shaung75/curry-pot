@@ -21,43 +21,43 @@
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
 
-	<header id="masthead" class="site-header" role="banner">
-		<?php $slidecount = ft_of_get_option('fabthemes_slidecount','4'); ?>
-		<?php if ( is_front_page() ) { get_slide_items($slidecount); } ?>
-		
-		<div class="site-branding <?php if ( !is_front_page() ) { echo 'inhead'; } ?>">
-			<div class="container"> <div class="row"> 
-				<div class="col-md-12">
-					
-	<?php if (get_theme_mod(FT_scope::tool()->optionsName . '_logo', '') != '') { ?>
-				<h1 class="site-title logo"><a class="mylogo" rel="home" href="<?php bloginfo('siteurl');?>/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><img relWidth="<?php echo intval(get_theme_mod(FT_scope::tool()->optionsName . '_maxWidth', 0)); ?>" relHeight="<?php echo intval(get_theme_mod(FT_scope::tool()->optionsName . '_maxHeight', 0)); ?>" id="ft_logo" src="<?php echo get_theme_mod(FT_scope::tool()->optionsName . '_logo', ''); ?>" alt="" /></a></h1>
-	<?php } else { ?>
-				<h1 class="site-title logo"><a id="blogname" rel="home" href="<?php bloginfo('siteurl');?>/" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
-	<?php } ?>
-
-					<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-				</div>
-			</div></div> 
-		</div>
-		
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<div class="container"> 
-				<div class="row">
-					<div class="col-md-10">
-						<?php wp_nav_menu( array( 'theme_location' => 'primary','menu_id' =>'bistro') ); ?>
-					</div>
-					<div class="col-md-2">
-						<ul class="menu  pull-right">
-							<li class="menu-item"><a href="#">hi</a></li>
-							<li class="menu-item"><a href="#">hi</a></li>
-							<li class="menu-item"><a href="#">hi</a></li>
-						</ul>
-					</div>
-				</div>
+	<nav class="navbar navbar-default" role="navigation"> 
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display --> 
+			<div class="navbar-header"> 
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> 
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+				</button> 
+				<a class="navbar-brand" href="#">
+					<img relWidth="<?php echo intval(get_theme_mod(FT_scope::tool()->optionsName . '_maxWidth', 0)); ?>" relHeight="<?php echo intval(get_theme_mod(FT_scope::tool()->optionsName . '_maxHeight', 0)); ?>" id="ft_logo" src="<?php echo get_theme_mod(FT_scope::tool()->optionsName . '_logo', ''); ?>" alt="" />
+				</a> 
+			</div> 
+			<!-- Collect the nav links, forms, and other content for toggling --> 
+			<div class="collapse navbar-collapse navbar-ex1-collapse"> 
+				<ul class="nav navbar-nav"> 
+					<li class="active"><a href="#">Link</a></li> 
+					<li><a href="#">Link</a></li> 
+					<li class="dropdown">
+						<a href="http://www.google.com" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a> 
+						<ul class="dropdown-menu"> 
+							<li><a href="#">Action</a></li> 
+							<li><a href="#">Another action</a></li> 
+							<li><a href="#">Something else here</a></li> 
+							<li><a href="#">Separated link</a></li> 
+							<li><a href="#">One more separated link</a></li> 
+							<li><a href="#">One more separated link</a></li> 
+							<li><a href="#">One more separated link</a></li> 
+							<li><a href="#">One more separated link</a></li> 
+							<li><a href="#">One more separated link</a></li> 
+						</ul> 
+					</li> 
+				</ul>
 			</div>
-		</nav><!-- #site-navigation -->
-
-	</header><!-- #masthead -->
+		</div>
+	</nav>
 
 	<div id="content" class="site-content">
 		
