@@ -9,8 +9,23 @@ Template name: Homepage
 
 get_header(); ?>
 
-<!-- Latest recipes -->
+<div class="row home-banner row-eq-height">
+	<div class="col-md-6">
+		<img src="http://www.curry-pot.com/wp-content/uploads/2016/12/lamb-jalfrezi.jpg">
+	</div>
 
+	<div class="col-md-6 home-spotlight">
+	<?php if ( have_posts() ) : ?>
+
+		<?php while ( have_posts() ) : the_post(); ?>
+			<h1><?php the_title();?></h1>
+			<?php the_content(); ?>
+			<?php endwhile; ?>
+	<?php endif; ?>
+	</div>
+</div>
+
+<!-- Latest recipes -->
 <div class="home-section">
 	<div class="container"> <div class="row">
 

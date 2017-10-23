@@ -168,5 +168,23 @@ li.dropdown:hover > .dropdown-menu {
     padding-top: 10px;
 }
 .home-section {
-    margin-top: 10px;
+}
+.home-banner {
+    margin-top: -20px;
+    background: #82ac06;
+    color: #fff;
+    border-bottom: 5px solid #fff;
+    display: table;
+}
+.home-banner img {
+    border-right: 5px solid #fff;
+}
+.home-banner h1 {
+    font-family: 'Bree Serif', serif;
+    font-size: 42px;
+    margin-bottom: 30px;
+
+}
+.home-spotlight {
+    padding: 40px;
 }
