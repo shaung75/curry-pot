@@ -19,11 +19,17 @@
 </head>
 
 <body <?php body_class(); ?>>
+
 <div id="page" class="hfeed site">
 
 	<nav class="navbar navbar-default" role="navigation"> 
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display --> 
+			
+				<ul class="nav navbar-nav pull-right">
+					<li style="display: inline-block;"><a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+					<li style="display: inline-block;"><a href="#">link</a></li>
+				</ul>
 			<div class="navbar-header"> 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> 
 					<span class="sr-only">Toggle navigation</span> 
@@ -31,13 +37,14 @@
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
 				</button> 
+
 				<a class="navbar-brand" href="<?php bloginfo('url')?>">
 					<img relWidth="<?php echo intval(get_theme_mod(FT_scope::tool()->optionsName . '_maxWidth', 0)); ?>" relHeight="<?php echo intval(get_theme_mod(FT_scope::tool()->optionsName . '_maxHeight', 0)); ?>" id="ft_logo" src="<?php echo get_theme_mod(FT_scope::tool()->optionsName . '_logo', ''); ?>" alt="" />
 				</a> 
-			</div> 
+			</div>
+
 			<!-- Collect the nav links, forms, and other content for toggling --> 
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
-
 			<?php /* Primary navigation */
 				wp_nav_menu( array(
 					'menu' => 'Main Menu',
@@ -48,7 +55,7 @@
 					'walker' => new wp_bootstrap_navwalker())
 				);
 			?>
-			</div>
+			</div>			
 		</div>
 	</nav>
 
