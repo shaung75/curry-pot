@@ -27,8 +27,18 @@
 			<!-- Brand and toggle get grouped for better mobile display --> 
 			
 				<ul class="nav navbar-nav pull-right">
-					<li style="display: inline-block;"><a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
-					<li style="display: inline-block;"><a href="#">link</a></li>
+					<li style="display: inline-block;">
+						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="My Account">
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+						</a>
+					</li>
+					<li style="display: inline-block;">
+						<a class="cart-customlocation" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
+							<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>  - 
+							<?php echo WC()->cart->get_cart_total(); ?> <?php echo sprintf ( _n( '(%d item)', '(%d items)', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?>
+						</a>
+					</li>
+					
 				</ul>
 			<div class="navbar-header"> 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> 
