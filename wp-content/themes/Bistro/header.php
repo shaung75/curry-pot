@@ -34,8 +34,8 @@
 					</li>
 					<li style="display: inline-block;">
 						<a class="cart-customlocation" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
-							<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>  - 
-							<?php echo WC()->cart->get_cart_total(); ?> <?php echo sprintf ( _n( '(%d item)', '(%d items)', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?>
+							<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="hidden-xs">  - 
+							<?php echo WC()->cart->get_cart_total(); ?> <?php echo sprintf ( _n( '(%d item)', '(%d items)', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?></span>
 						</a>
 					</li>
 					
