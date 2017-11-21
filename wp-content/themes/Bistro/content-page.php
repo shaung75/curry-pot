@@ -9,6 +9,8 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<span class="vcard author author_name hstuff"><span class="fn"><?php the_author(); ?></span></span>
+		<span class="date updated published hstuff"><?php the_time('Y-m-d'); ?></span>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
