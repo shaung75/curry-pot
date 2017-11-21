@@ -27,6 +27,9 @@
 			<meta itemprop="datePublished" content="<?php the_time('Y-m-d'); ?>" /> 
 			<meta itemprop="author" content="<?php the_author(); ?>" /> 
 
+			<span class="vcard author author_name hstuff"><span class="fn"><?php the_author(); ?></span></span>
+			<span class="date updated published hstuff"><?php the_time('Y-m-d'); ?></span>
+
 			<span itemprop="recipeCategory"> <?php echo get_the_term_list( $post->ID, 'type', '<b>Type:</b> ', ', ' ); ?> </span>
 			<span itemprop="recipeCuisine"> <?php echo get_the_term_list( $post->ID, 'cuisine', '<b>Cuisine:</b> ', ', ' ); ?></span>
 			<?php $duration = get_post_meta( $post->ID, '_cmb_recipe_time', true ); 
