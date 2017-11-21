@@ -66,3 +66,16 @@ function cp_scripts() {
 	wp_enqueue_script('cp-scripts');
 }
 add_action( 'wp_enqueue_scripts', 'cp_scripts' );
+
+/**
+ * Limit products per page to 9
+ */
+
+add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
+
+function new_loop_shop_per_page( $cols ) {
+  // $cols contains the current number of products per page based on the value stored on Options -> Reading
+  // Return the number of products you wanna show per page.
+  $cols = 9;
+  return $cols;
+}
